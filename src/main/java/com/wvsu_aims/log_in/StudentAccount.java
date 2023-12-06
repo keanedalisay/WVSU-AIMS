@@ -1,14 +1,26 @@
 package com.wvsu_aims.log_in;
 
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.text.BadLocationException;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.ImageIcon;
+import javax.swing.SwingUtilities;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
+import java.util.Arrays;
+
+import com.wvsu_aims.data.obj_ser.ObjSer;
+import com.wvsu_aims.stud_account.Test;
+import com.wvsu_aims.data.Students;
+import com.wvsu_aims.data.Student;
 
 public class StudentAccount extends JPanel {
   private JPanel jPanel2 = new JPanel();
@@ -16,9 +28,11 @@ public class StudentAccount extends JPanel {
   private JPanel jPanel3 = new JPanel();
   private JPanel jPanel4 = new JPanel();
   private JLabel yourIdLabel = new JLabel();
+  private JLabel yourIdErrLabel = new JLabel();
   private JTextField yourIdTextField = new JTextField();
-  private JTextField yourPswdTextField = new JTextField();
+  private JPasswordField yourPswdTextField = new JPasswordField();
   private JLabel yourPswdLabel = new JLabel();
+  private JLabel yourPswdErrLabel = new JLabel();
   private JButton backToChsAcctBtn = new JButton();
   private JButton logInStudentBtn = new JButton();
   private JPanel jPanel5 = new JPanel();
@@ -49,17 +63,33 @@ public class StudentAccount extends JPanel {
   private void addLabels() {
     yourIdLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
     yourIdLabel.setForeground(new java.awt.Color(33, 33, 33));
-    yourIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    yourIdLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
     yourIdLabel.setText("Your ID:");
     yourIdLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
     yourIdLabel.setPreferredSize(new java.awt.Dimension(93, 16));
 
+    yourIdErrLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+    yourIdErrLabel.setForeground(new java.awt.Color(255, 38, 38));
+    yourIdErrLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+    yourIdErrLabel.setText("");
+    yourIdErrLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    yourIdErrLabel.setPreferredSize(new java.awt.Dimension(93, 16));
+    yourIdErrLabel.setVisible(false);
+
     yourPswdLabel.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
     yourPswdLabel.setForeground(new java.awt.Color(33, 33, 33));
-    yourPswdLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+    yourPswdLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
     yourPswdLabel.setText("Your Password:");
     yourPswdLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
     yourPswdLabel.setPreferredSize(new java.awt.Dimension(93, 16));
+
+    yourPswdErrLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+    yourPswdErrLabel.setForeground(new java.awt.Color(255, 38, 38));
+    yourPswdErrLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+    yourPswdErrLabel.setText("");
+    yourPswdErrLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEADING);
+    yourPswdErrLabel.setPreferredSize(new java.awt.Dimension(93, 16));
+    yourPswdErrLabel.setVisible(false);
 
     gradHatIcon.setFont(new java.awt.Font("Segoe UI", 0, 30)); // NOI18N
     gradHatIcon.setForeground(new java.awt.Color(33, 33, 33));
@@ -258,6 +288,10 @@ public class StudentAccount extends JPanel {
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 66,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(yourIdErrLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                240,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(yourIdTextField,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 197,
@@ -265,6 +299,10 @@ public class StudentAccount extends JPanel {
                             .addComponent(yourPswdLabel,
                                 javax.swing.GroupLayout.PREFERRED_SIZE,
                                 111,
+                                javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(yourPswdErrLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
+                                200,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout
                         .createSequentialGroup()
@@ -282,7 +320,7 @@ public class StudentAccount extends JPanel {
     jPanel4Layout.setVerticalGroup(
         jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(25, 25, 25)
                 .addComponent(yourIdLabel,
                     javax.swing.GroupLayout.PREFERRED_SIZE,
                     25,
@@ -293,7 +331,11 @@ public class StudentAccount extends JPanel {
                     javax.swing.GroupLayout.PREFERRED_SIZE,
                     36,
                     javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addComponent(yourIdErrLabel,
+                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                    30,
+                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
                 .addComponent(yourPswdLabel,
                     javax.swing.GroupLayout.PREFERRED_SIZE,
                     25,
@@ -304,7 +346,11 @@ public class StudentAccount extends JPanel {
                     javax.swing.GroupLayout.PREFERRED_SIZE,
                     36,
                     javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
+                .addComponent(yourPswdErrLabel,
+                    javax.swing.GroupLayout.PREFERRED_SIZE,
+                    30,
+                    javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel4Layout.createParallelGroup(
                     javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToChsAcctBtn,
@@ -324,6 +370,49 @@ public class StudentAccount extends JPanel {
     backToChsAcctBtn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         ((CardLayout) contentPanel.getLayout()).show(contentPanel, "ChooseAccountPanel");
+      }
+    });
+  }
+
+  public void setLogInStudentButtonEvent(JPanel contentPanel) {
+    logInStudentBtn.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        Students students = (Students) ObjSer.deserialize("com/wvsu_aims/data/obj_ser/students.ser");
+        String textFieldId = "";
+        try {
+          textFieldId = yourIdTextField.getText(0, 9).trim();
+        } catch (BadLocationException err) {
+          JOptionPane.showMessageDialog(contentPanel,
+              "Unable to get your ID text input. Sorry for the software error.",
+              "",
+              JOptionPane.ERROR_MESSAGE);
+          System.err.println(err.getMessage());
+          for (StackTraceElement stackTrace : err.getStackTrace()) {
+            System.err.println(stackTrace);
+          }
+          return;
+        }
+
+        Student student = students.getStudent(yourIdTextField.getText().trim());
+        yourPswdErrLabel.setText("");
+        yourPswdErrLabel.setVisible(false);
+        if (student == null) {
+          yourIdErrLabel.setText("Account with ID '" + textFieldId + "' does not exist");
+          yourIdErrLabel.setVisible(true);
+          return;
+        }
+
+        yourIdErrLabel.setText("");
+        yourIdErrLabel.setVisible(false);
+
+        if (!Arrays.equals(student.getPassword().toCharArray(), yourPswdTextField.getPassword())) {
+          yourPswdErrLabel.setText("Your password is incorrect");
+          yourPswdErrLabel.setVisible(true);
+          return;
+        }
+
+        JFrame main = (JFrame) SwingUtilities.getWindowAncestor(contentPanel);
+        main.dispose();
       }
     });
   }

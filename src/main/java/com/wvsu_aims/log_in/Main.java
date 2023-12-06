@@ -15,6 +15,7 @@ public class Main extends JFrame {
     CardLayout cardLayout = new CardLayout();
     JPanel contentPanel = new JPanel();
 
+    // Do dependency injection instead
     ChooseAccount chooseAccount = new ChooseAccount();
     StudentAccount studentAccount = new StudentAccount();
     FacultyAccount facultyAccount = new FacultyAccount();
@@ -27,6 +28,8 @@ public class Main extends JFrame {
 
     studentAccount.setPanelLayout(contentPanel);
     studentAccount.setChooseAccountButtonEvent(contentPanel);
+    studentAccount.setLogInStudentButtonEvent(contentPanel);
+
     facultyAccount.setPanelLayout(contentPanel);
     facultyAccount.setChooseAccountButtonEvent(contentPanel);
 
