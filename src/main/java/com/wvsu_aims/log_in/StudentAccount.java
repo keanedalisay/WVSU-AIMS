@@ -13,9 +13,8 @@ import java.awt.CardLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import java.util.Arrays;
-
 import com.wvsu_aims.data.obj_ser.ObjSer;
+import com.wvsu_aims.data.verify.Verify;
 import com.wvsu_aims.data.Students;
 import com.wvsu_aims.data.Student;
 
@@ -376,7 +375,7 @@ public class StudentAccount extends JPanel {
         yourPswdErrLabel.setText("");
         yourPswdErrLabel.setVisible(false);
 
-        if (textFieldId.isBlank()) {
+        if (Verify.textFieldIsEmpty(yourIdTextField)) {
           yourIdErrLabel.setText("Please enter your registered ID");
           yourIdErrLabel.setVisible(true);
           return;
@@ -398,11 +397,11 @@ public class StudentAccount extends JPanel {
         yourIdErrLabel.setText("");
         yourIdErrLabel.setVisible(false);
 
-        if (yourPswdTextField.getPassword().length == 0) {
+        if (Verify.pswdFieldIsEmpty(yourPswdTextField)) {
           yourPswdErrLabel.setText("Please enter a password");
           yourPswdErrLabel.setVisible(true);
           return;
-        } else if (!Arrays.equals(student.getPassword().toCharArray(), yourPswdTextField.getPassword())) {
+        } else if (Verify.pswdMatches(student, yourPswdTextField)) {
           yourPswdErrLabel.setText("Your password is incorrect");
           yourPswdErrLabel.setVisible(true);
           return;
