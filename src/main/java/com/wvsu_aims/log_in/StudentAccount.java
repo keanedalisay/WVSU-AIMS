@@ -3,9 +3,7 @@ package com.wvsu_aims.log_in;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.text.BadLocationException;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
@@ -18,7 +16,6 @@ import java.awt.event.ActionEvent;
 import java.util.Arrays;
 
 import com.wvsu_aims.data.obj_ser.ObjSer;
-import com.wvsu_aims.stud_account.Test;
 import com.wvsu_aims.data.Students;
 import com.wvsu_aims.data.Student;
 
@@ -39,10 +36,6 @@ public class StudentAccount extends JPanel {
   private JLabel gradHatIcon = new JLabel();
   private JLabel scholarLabel = new JLabel();
   private JLabel welcomeLabel = new JLabel();
-
-  public static void main(String args[]) {
-    System.out.print("test");
-  }
 
   private void setDimensions() {
     jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -378,26 +371,26 @@ public class StudentAccount extends JPanel {
     logInStudentBtn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         Students students = (Students) ObjSer.deserialize("com/wvsu_aims/data/obj_ser/students.ser");
-        String textFieldId = "";
-        try {
-          textFieldId = yourIdTextField.getText(0, 9).trim();
-        } catch (BadLocationException err) {
-          JOptionPane.showMessageDialog(contentPanel,
-              "Unable to get your ID text input. Sorry for the software error.",
-              "",
-              JOptionPane.ERROR_MESSAGE);
-          System.err.println(err.getMessage());
-          for (StackTraceElement stackTrace : err.getStackTrace()) {
-            System.err.println(stackTrace);
-          }
+        String textFieldId = yourIdTextField.getText();
+
+        yourPswdErrLabel.setText("");
+        yourPswdErrLabel.setVisible(false);
+
+        if (textFieldId.isBlank()) {
+          yourIdErrLabel.setText("Please enter your registered ID");
+          yourIdErrLabel.setVisible(true);
           return;
         }
 
         Student student = students.getStudent(yourIdTextField.getText().trim());
-        yourPswdErrLabel.setText("");
-        yourPswdErrLabel.setVisible(false);
+        yourIdErrLabel.setText("");
+        yourIdErrLabel.setVisible(false);
+
         if (student == null) {
-          yourIdErrLabel.setText("Account with ID '" + textFieldId + "' does not exist");
+          yourIdErrLabel.setText(
+              "Account with ID '"
+                  + textFieldId.substring(0, textFieldId.length() < 9 ? textFieldId.length() : 9)
+                  + "' does not exist");
           yourIdErrLabel.setVisible(true);
           return;
         }
@@ -405,7 +398,11 @@ public class StudentAccount extends JPanel {
         yourIdErrLabel.setText("");
         yourIdErrLabel.setVisible(false);
 
-        if (!Arrays.equals(student.getPassword().toCharArray(), yourPswdTextField.getPassword())) {
+        if (yourPswdTextField.getPassword().length == 0) {
+          yourPswdErrLabel.setText("Please enter a password");
+          yourPswdErrLabel.setVisible(true);
+          return;
+        } else if (!Arrays.equals(student.getPassword().toCharArray(), yourPswdTextField.getPassword())) {
           yourPswdErrLabel.setText("Your password is incorrect");
           yourPswdErrLabel.setVisible(true);
           return;
