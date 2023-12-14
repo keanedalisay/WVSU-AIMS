@@ -1,15 +1,20 @@
 package com.wvsu_aims.account_stud;
 
 import javax.swing.JPanel;
+import javax.swing.SwingUtilities;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.border.LineBorder;
 
+import com.wvsu_aims.WVSU_AIMS;
 import com.wvsu_aims.data.Student;
 
 import javax.swing.BorderFactory;
 
 import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.Dimension;
 
@@ -178,6 +183,15 @@ public class StudentBiodata extends JPanel {
                                         javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap(30, 30)));
 
+    }
+
+    public void setLogOutButtonEvent(JPanel contentPanel) {
+        logOutBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JFrame main = (JFrame) SwingUtilities.getWindowAncestor(contentPanel);
+                main.dispose();
+            }
+        });
     }
 
     private void addFathersBio() {

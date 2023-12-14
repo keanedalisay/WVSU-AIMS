@@ -42,6 +42,10 @@ public class StudentAccount extends JFrame {
     studAccountNav.setSubjectsButtonEvent(infoPanel, "StudentSubjectsPanel");
     studAccountNav.setGradesButtonEvent(infoPanel, "StudentGradesPanel");
 
+    biodataPanel.setLogOutButtonEvent(contentPanel);
+    subjectsPanel.setLogOutButtonEvent(contentPanel);
+    gradesPanel.setLogOutButtonEvent(contentPanel);
+
     contentPanel.add(infoPanel);
 
     this.setDimensions();
