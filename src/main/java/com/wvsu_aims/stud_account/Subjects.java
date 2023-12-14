@@ -193,7 +193,7 @@ public class Subjects extends JPanel {
                     javax.swing.GroupLayout.PREFERRED_SIZE)));
   }
 
-  public Subjects() {
+  Subjects() {
     this.setBackground(new Color(255, 255, 255));
     this.setPreferredSize(new Dimension(750, 750));
 
