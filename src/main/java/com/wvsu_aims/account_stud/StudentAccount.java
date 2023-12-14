@@ -17,10 +17,10 @@ import com.wvsu_aims.data.Student;
 
 public class StudentAccount extends JFrame {
 
-  AccountNavbar studAccountNav = new AccountNavbar();
-  JPanel contentPanel = new JPanel();
-
   public StudentAccount(Student user) {
+    AccountNavbar studAccountNav = new AccountNavbar(user);
+    JPanel contentPanel = new JPanel();
+
     contentPanel.setBackground(new Color(255, 255, 255));
     Border contentPanelMargin = BorderFactory.createEmptyBorder(30, 0, 0, 0);
     contentPanel.setBorder(contentPanelMargin);

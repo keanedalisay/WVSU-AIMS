@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+import com.wvsu_aims.data.Student;
+
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,6 +17,8 @@ import java.awt.CardLayout;
 import java.awt.Color;
 
 public class AccountNavbar extends JPanel {
+  private Student user;
+
   private JLabel userProfileIcon = new JLabel();
   private JLabel userProfileLabel = new JLabel();
   private JButton biodataBtn = new JButton();
@@ -26,7 +30,8 @@ public class AccountNavbar extends JPanel {
     userProfileIcon.setSize(new Dimension(45, 45));
 
     userProfileLabel.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-    userProfileLabel.setText("<html> Kazumaki Kuronami, Prince of Kuroshio<br> <i>2021M0660</i> </html>");
+    userProfileLabel
+        .setText("<html>" + user.getBiodata().getFullName() + "<br> <i>" + user.getStudentID() + "</i> </html>");
   }
 
   private void addButtons() {
@@ -137,7 +142,8 @@ public class AccountNavbar extends JPanel {
     });
   }
 
-  public AccountNavbar() {
+  public AccountNavbar(Student user) {
+    this.user = user;
     this.setBackground(new Color(255, 255, 255));
     this.addButtons();
     this.addLabels();

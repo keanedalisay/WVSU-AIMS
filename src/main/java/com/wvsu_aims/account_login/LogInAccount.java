@@ -18,7 +18,7 @@ public class LogInAccount extends JFrame {
   private LogInStudent studentAccount = new LogInStudent();
   private LogInFaculty facultyAccount = new LogInFaculty();
 
-  public LogInAccount(CountDownLatch loginSignal) {
+  public LogInAccount(CountDownLatch logInSignal) {
     contentPanel.setLayout(cardLayout);
 
     chooseAccount.setFacultyButtonEvent(contentPanel);
@@ -27,7 +27,7 @@ public class LogInAccount extends JFrame {
 
     studentAccount.setPanelLayout(contentPanel);
     studentAccount.setChooseAccountButtonEvent(contentPanel);
-    studentAccount.setLogInStudentButtonEvent(contentPanel, loginSignal);
+    studentAccount.setLogInStudentButtonEvent(contentPanel, logInSignal);
 
     facultyAccount.setPanelLayout(contentPanel);
     facultyAccount.setChooseAccountButtonEvent(contentPanel);

@@ -8,16 +8,18 @@ import com.wvsu_aims.account_stud.StudentAccount;
 public class WVSU_AIMS {
   public static void main(String args[]) {
     try {
-      CountDownLatch loginSignal = new CountDownLatch(1);
-      LogInAccount logIn = new LogInAccount(loginSignal);
-      logIn.setVisible(true);
-      loginSignal.await();
+      CountDownLatch logInSignal = new CountDownLatch(1);
 
-      StudentAccount studAcc = new StudentAccount(logIn.getUser());
-      studAcc.setVisible(true);
+      LogInAccount logIn = new LogInAccount(logInSignal);
+      logIn.setVisible(true);
+
+      logInSignal.await();
+
+      StudentAccount studentAccount = new StudentAccount(logIn.getUser());
+      studentAccount.setVisible(true);
+
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-
   }
 }

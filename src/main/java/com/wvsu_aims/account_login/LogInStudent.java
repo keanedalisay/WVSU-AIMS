@@ -20,6 +20,8 @@ import com.wvsu_aims.data.Students;
 import com.wvsu_aims.data.Student;
 
 public class LogInStudent extends JPanel {
+  private Student user;
+
   private JPanel jPanel2 = new JPanel();
   private JPanel jPanel1 = new JPanel();
   private JPanel jPanel3 = new JPanel();
@@ -37,7 +39,9 @@ public class LogInStudent extends JPanel {
   private JLabel scholarLabel = new JLabel();
   private JLabel welcomeLabel = new JLabel();
 
-  private Student user;
+  public Student getUser() {
+    return this.user;
+  }
 
   private void setDimensions() {
     jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -369,7 +373,7 @@ public class LogInStudent extends JPanel {
     });
   }
 
-  public void setLogInStudentButtonEvent(JPanel contentPanel, CountDownLatch loginSignal) {
+  public void setLogInStudentButtonEvent(JPanel contentPanel, CountDownLatch logInSignal) {
     logInStudentBtn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         Students students = (Students) ObjSer.deserialize("com/wvsu_aims/data/obj_ser/students.ser");
@@ -411,15 +415,11 @@ public class LogInStudent extends JPanel {
         }
 
         user = student;
-        loginSignal.countDown();
+        logInSignal.countDown();
         JFrame main = (JFrame) SwingUtilities.getWindowAncestor(contentPanel);
         main.dispose();
       }
     });
-  }
-
-  public Student getUser() {
-    return this.user;
   }
 
   LogInStudent() {
