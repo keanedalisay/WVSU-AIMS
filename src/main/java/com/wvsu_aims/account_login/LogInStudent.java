@@ -1,4 +1,4 @@
-package com.wvsu_aims.log_in;
+package com.wvsu_aims.account_login;
 
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -11,6 +11,7 @@ import javax.swing.SwingUtilities;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionListener;
+import java.util.concurrent.CountDownLatch;
 import java.awt.event.ActionEvent;
 
 import com.wvsu_aims.data.obj_ser.ObjSer;
@@ -18,7 +19,7 @@ import com.wvsu_aims.data.verify.Verify;
 import com.wvsu_aims.data.Students;
 import com.wvsu_aims.data.Student;
 
-public class StudentAccount extends JPanel {
+public class LogInStudent extends JPanel {
   private JPanel jPanel2 = new JPanel();
   private JPanel jPanel1 = new JPanel();
   private JPanel jPanel3 = new JPanel();
@@ -35,6 +36,8 @@ public class StudentAccount extends JPanel {
   private JLabel gradHatIcon = new JLabel();
   private JLabel scholarLabel = new JLabel();
   private JLabel welcomeLabel = new JLabel();
+
+  private Student user;
 
   private void setDimensions() {
     jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -366,7 +369,7 @@ public class StudentAccount extends JPanel {
     });
   }
 
-  public void setLogInStudentButtonEvent(JPanel contentPanel) {
+  public void setLogInStudentButtonEvent(JPanel contentPanel, CountDownLatch loginSignal) {
     logInStudentBtn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent ev) {
         Students students = (Students) ObjSer.deserialize("com/wvsu_aims/data/obj_ser/students.ser");
@@ -407,13 +410,19 @@ public class StudentAccount extends JPanel {
           return;
         }
 
+        user = student;
+        loginSignal.countDown();
         JFrame main = (JFrame) SwingUtilities.getWindowAncestor(contentPanel);
         main.dispose();
       }
     });
   }
 
-  StudentAccount() {
+  public Student getUser() {
+    return this.user;
+  }
+
+  LogInStudent() {
     this.setDimensions();
     this.addLabels();
     this.addButtons();

@@ -1,4 +1,4 @@
-package com.wvsu_aims.stud_account;
+package com.wvsu_aims.account_stud;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,7 +14,7 @@ import java.awt.Dimension;
 import java.awt.Color;
 import java.awt.Font;
 
-public class Subjects extends JPanel {
+public class StudentSubjects extends JPanel {
   private JPanel jPanel9 = new JPanel();
   private JButton logOutBtn = new JButton();
   private JLabel courseLabel = new JLabel();
@@ -193,7 +193,7 @@ public class Subjects extends JPanel {
                     javax.swing.GroupLayout.PREFERRED_SIZE)));
   }
 
-  Subjects() {
+  StudentSubjects() {
     this.setBackground(new Color(255, 255, 255));
     this.setPreferredSize(new Dimension(750, 750));
 

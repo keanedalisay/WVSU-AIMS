@@ -1,25 +1,24 @@
-package com.wvsu_aims.log_in;
+package com.wvsu_aims.account_login;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import com.wvsu_aims.data.Student;
+
 import javax.swing.ImageIcon;
 
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.util.concurrent.CountDownLatch;
 
-public class Main extends JFrame {
+public class LogInAccount extends JFrame {
+  private CardLayout cardLayout = new CardLayout();
+  private JPanel contentPanel = new JPanel();
+  private ChooseAccount chooseAccount = new ChooseAccount();
+  private LogInStudent studentAccount = new LogInStudent();
+  private LogInFaculty facultyAccount = new LogInFaculty();
 
-  public static void main(String[] args) {
-    Main main = new Main();
-
-    CardLayout cardLayout = new CardLayout();
-    JPanel contentPanel = new JPanel();
-
-    // Do dependency injection instead
-    ChooseAccount chooseAccount = new ChooseAccount();
-    StudentAccount studentAccount = new StudentAccount();
-    FacultyAccount facultyAccount = new FacultyAccount();
-
+  public LogInAccount(CountDownLatch loginSignal) {
     contentPanel.setLayout(cardLayout);
 
     chooseAccount.setFacultyButtonEvent(contentPanel);
@@ -28,7 +27,7 @@ public class Main extends JFrame {
 
     studentAccount.setPanelLayout(contentPanel);
     studentAccount.setChooseAccountButtonEvent(contentPanel);
-    studentAccount.setLogInStudentButtonEvent(contentPanel);
+    studentAccount.setLogInStudentButtonEvent(contentPanel, loginSignal);
 
     facultyAccount.setPanelLayout(contentPanel);
     facultyAccount.setChooseAccountButtonEvent(contentPanel);
@@ -37,9 +36,12 @@ public class Main extends JFrame {
     contentPanel.add(studentAccount, "StudentAccountPanel");
     contentPanel.add(facultyAccount, "FacultyAccountPanel");
 
-    main.add(contentPanel);
-    main.setDimensions();
-    main.setVisible(true);
+    this.add(contentPanel);
+    this.setDimensions();
+  }
+
+  public Student getUser() {
+    return this.studentAccount.getUser();
   }
 
   private void setDimensions() {

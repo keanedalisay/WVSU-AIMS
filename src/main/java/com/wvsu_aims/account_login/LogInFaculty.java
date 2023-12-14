@@ -1,17 +1,27 @@
-package com.wvsu_aims.log_in;
+package com.wvsu_aims.account_login;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
+import javax.swing.text.BadLocationException;
+
+import com.wvsu_aims.data.Student;
+import com.wvsu_aims.data.Students;
+import com.wvsu_aims.data.obj_ser.ObjSer;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
-public class FacultyAccount extends JPanel {
+public class LogInFaculty extends JPanel {
 
   private JPanel jPanel2 = new JPanel();
   private JPanel jPanel1 = new JPanel();
@@ -148,21 +158,25 @@ public class FacultyAccount extends JPanel {
                             .addComponent(yourPswdTextField,
                                 javax.swing.GroupLayout.PREFERRED_SIZE, 197,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(yourIdLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(yourIdLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 66,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(yourIdTextField,
                                 javax.swing.GroupLayout.PREFERRED_SIZE, 197,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(yourPswdLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(yourPswdLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 111,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(32, 32, 32)
-                        .addComponent(logInFacultyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
+                        .addComponent(logInFacultyBtn, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            100,
                             javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(backToChsAcctBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 100,
+                        .addComponent(backToChsAcctBtn, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            100,
                             javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(65, Short.MAX_VALUE)));
     jPanel4Layout.setVerticalGroup(
@@ -275,7 +289,53 @@ public class FacultyAccount extends JPanel {
     });
   }
 
-  FacultyAccount() {
+  // public void setLogInFacultyButtonEvent(JPanel contentPanel) {
+  // logInFacultyBtn.addActionListener(new ActionListener() {
+  // public void actionPerformed(ActionEvent ev) {
+  // Students students = (Students)
+  // ObjSer.deserialize("com/wvsu_aims/data/obj_ser/faculty.ser");
+  // String textFieldId = "";
+  // try {
+  // textFieldId = yourIdTextField.getText(0, 9).trim();
+  // } catch (BadLocationException err) {
+  // JOptionPane.showMessageDialog(contentPanel,
+  // "Unable to get your ID text input. Sorry for the software error.",
+  // "",
+  // JOptionPane.ERROR_MESSAGE);
+  // System.err.println(err.getMessage());
+  // for (StackTraceElement stackTrace : err.getStackTrace()) {
+  // System.err.println(stackTrace);
+  // }
+  // return;
+  // }
+
+  // Student student = students.getStudent(yourIdTextField.getText().trim());
+  // yourPswdErrLabel.setText("");
+  // yourPswdErrLabel.setVisible(false);
+  // if (student == null) {
+  // yourIdErrLabel.setText("Account with ID '" + textFieldId + "' does not
+  // exist");
+  // yourIdErrLabel.setVisible(true);
+  // return;
+  // }
+
+  // yourIdErrLabel.setText("");
+  // yourIdErrLabel.setVisible(false);
+
+  // if (!Arrays.equals(student.getPassword().toCharArray(),
+  // yourPswdTextField.getPassword())) {
+  // yourPswdErrLabel.setText("Your password is incorrect");
+  // yourPswdErrLabel.setVisible(true);
+  // return;
+  // }
+
+  // JFrame main = (JFrame) SwingUtilities.getWindowAncestor(contentPanel);
+  // main.dispose();
+  // }
+  // });
+  // }
+
+  LogInFaculty() {
     this.setDimensions();
     this.addLabels();
     this.addTextFields();

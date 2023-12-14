@@ -1,4 +1,4 @@
-package com.wvsu_aims.stud_account;
+package com.wvsu_aims.account_stud;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -12,15 +12,15 @@ import java.awt.CardLayout;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
-import com.wvsu_aims.account_nav.AccountNav;
+import com.wvsu_aims.account_navbar.AccountNavbar;
+import com.wvsu_aims.data.Student;
 
-public class Main extends JFrame {
+public class StudentAccount extends JFrame {
 
-  public static void main(String args[]) {
-    Main main = new Main();
-    AccountNav studAccountNav = new AccountNav();
+  AccountNavbar studAccountNav = new AccountNavbar();
+  JPanel contentPanel = new JPanel();
 
-    JPanel contentPanel = new JPanel();
+  public StudentAccount(Student user) {
     contentPanel.setBackground(new Color(255, 255, 255));
     Border contentPanelMargin = BorderFactory.createEmptyBorder(30, 0, 0, 0);
     contentPanel.setBorder(contentPanelMargin);
@@ -31,9 +31,9 @@ public class Main extends JFrame {
     infoPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
     infoPanel.setLayout(new CardLayout());
 
-    Biodata biodataPanel = new Biodata();
-    Subjects subjectsPanel = new Subjects();
-    Grades gradesPanel = new Grades();
+    StudentBiodata biodataPanel = new StudentBiodata(user);
+    StudentSubjects subjectsPanel = new StudentSubjects();
+    StudentGrades gradesPanel = new StudentGrades();
     infoPanel.add(biodataPanel, "StudentBiodataPanel");
     infoPanel.add(subjectsPanel, "StudentSubjectsPanel");
     infoPanel.add(gradesPanel, "StudentGradesPanel");
@@ -44,9 +44,8 @@ public class Main extends JFrame {
 
     contentPanel.add(infoPanel);
 
-    main.setDimensions();
-    main.add(contentPanel);
-    main.setVisible(true);
+    this.setDimensions();
+    this.add(contentPanel);
   }
 
   public void setDimensions() {

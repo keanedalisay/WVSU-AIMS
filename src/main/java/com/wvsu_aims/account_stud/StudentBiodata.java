@@ -1,16 +1,21 @@
-package com.wvsu_aims.stud_account;
+package com.wvsu_aims.account_stud;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import javax.swing.border.LineBorder;
+
+import com.wvsu_aims.data.Student;
+
 import javax.swing.BorderFactory;
 
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Dimension;
 
-public class Biodata extends JPanel {
+public class StudentBiodata extends JPanel {
+  private Student user;
+
   private JLabel studAgeLabel = new JLabel();
   private JLabel dateOfBirthLabel = new JLabel();
   private JLabel sexLabel = new JLabel();
@@ -35,10 +40,10 @@ public class Biodata extends JPanel {
     studBioPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(120, 120, 120)));
 
     studAgeLabel.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-    studAgeLabel.setText("<html>\n<b>Age:</b> 18\n</html>");
+    studAgeLabel.setText("<html>\n<b>Age:</b> " + user.getBiodata().getAge() + "\n</html>");
 
     dateOfBirthLabel.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-    dateOfBirthLabel.setText("<html> <b> Date of Birth: </b> March 9, 2075 </html>");
+    dateOfBirthLabel.setText("<html> <b> Date of Birth: </b>" + user.getBiodata().getDateOfBirth() + "</html>");
 
     sexLabel.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
     sexLabel.setText("<html>\n<b>\nSex:\n</b>\nMale\n</html>");
@@ -52,7 +57,8 @@ public class Biodata extends JPanel {
         studBioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(studBioPanelLayout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(studBioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(studBioPanelLayout
+                    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(studBioPanelLayout.createSequentialGroup()
                         .addComponent(studAgeLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
                             javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -69,10 +75,12 @@ public class Biodata extends JPanel {
                             .addComponent(sexLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(emailLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(emailLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(dateOfBirthLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(dateOfBirthLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))));
@@ -80,7 +88,8 @@ public class Biodata extends JPanel {
         studBioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(studBioPanelLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(studBioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(studBioPanelLayout
+                    .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE,
                         javax.swing.GroupLayout.DEFAULT_SIZE,
                         javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -107,7 +116,8 @@ public class Biodata extends JPanel {
     mBioHeading.setText("Mother's Biodata");
 
     mMaidenLabel.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
-    mMaidenLabel.setText("<html><i>Name corresponds to maiden name (with exception to titles of nobility)</i></html>");
+    mMaidenLabel
+        .setText("<html><i>Name corresponds to maiden name (with exception to titles of nobility)</i></html>");
 
     mFirstNameLabel.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
     mFirstNameLabel.setText("<html>\n<b>\nFirst Name:\n</b>\nShiroko, Empress of Kuroshio\n</html>");
@@ -136,13 +146,16 @@ public class Biodata extends JPanel {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel5Layout
                             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(mMidInitLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(mMidInitLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mFirstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(mFirstNameLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(mLastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(mLastNameLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
@@ -198,13 +211,16 @@ public class Biodata extends JPanel {
                         .addGap(40, 40, 40)
                         .addGroup(jPanel8Layout
                             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(fMidInitLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(fMidInitLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fFirstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(fFirstNameLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(fLastNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
+                            .addComponent(fLastNameLabel,
+                                javax.swing.GroupLayout.PREFERRED_SIZE,
                                 javax.swing.GroupLayout.DEFAULT_SIZE,
                                 javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(632, Short.MAX_VALUE)));
@@ -254,7 +270,8 @@ public class Biodata extends JPanel {
                 .addContainerGap(108, Short.MAX_VALUE)));
   }
 
-  Biodata() {
+  StudentBiodata(Student user) {
+    this.user = user;
     this.setBackground(new java.awt.Color(255, 255, 255));
     this.setPreferredSize(new Dimension(750, 750));
 

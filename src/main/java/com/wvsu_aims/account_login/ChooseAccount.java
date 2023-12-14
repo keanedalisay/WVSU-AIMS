@@ -1,4 +1,4 @@
-package com.wvsu_aims.log_in;
+package com.wvsu_aims.account_login;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;

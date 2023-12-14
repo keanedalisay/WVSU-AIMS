@@ -1,4 +1,4 @@
-package com.wvsu_aims.account_nav;
+package com.wvsu_aims.account_navbar;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,7 +14,7 @@ import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.Color;
 
-public class AccountNav extends JPanel {
+public class AccountNavbar extends JPanel {
   private JLabel userProfileIcon = new JLabel();
   private JLabel userProfileLabel = new JLabel();
   private JButton biodataBtn = new JButton();
@@ -137,7 +137,7 @@ public class AccountNav extends JPanel {
     });
   }
 
-  public AccountNav() {
+  public AccountNavbar() {
     this.setBackground(new Color(255, 255, 255));
     this.addButtons();
     this.addLabels();
