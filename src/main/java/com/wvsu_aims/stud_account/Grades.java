@@ -320,36 +320,7 @@ public class Grades extends JPanel {
         jLayeredPane2.add(jPanel12, "scd_year_grades");
     }
 
-    Grades() {
-        this.setPreferredSize(new Dimension(750, 750));
-        this.setBackground(new Color(255, 255, 255));
-
-        logOutBtn.setFont(new Font("Roboto", Font.BOLD, 14)); // NOI18N
-        logOutBtn.setForeground(new Color(0, 87, 170));
-        logOutBtn.setText("Log-Out");
-        logOutBtn.setBackground(new Color(255, 255, 255));
-        logOutBtn.setBorder(new javax.swing.border.LineBorder(new Color(0, 87, 170), 1, true));
-        logOutBtn.setPreferredSize(new Dimension(80, 30));
-
-        this.addStudCourse();
-        this.addFstYearGrades();
-        this.addScdYearGrades();
-
-        collegeLevelBtnLabel.setFont(new Font("Roboto", 0, 14)); // NOI18N
-        collegeLevelBtnLabel.setText("Below are the Buttons to navigate your grade for each college level");
-
-        collegeScdBtn.setFont(new Font("Roboto", Font.BOLD, 14)); // NOI18N
-        collegeScdBtn.setText("Second Year");
-        collegeScdBtn.setPreferredSize(new Dimension(100, 30));
-        collegeScdBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(0, 87, 170)));
-        collegeScdBtn.setBackground(new Color(255, 255, 255));
-
-        collegeFstBtn.setFont(new Font("Roboto", Font.BOLD, 14)); // NOI18N
-        collegeFstBtn.setText("First Year");
-        collegeFstBtn.setPreferredSize(new Dimension(100, 30));
-        collegeFstBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(0, 87, 170)));
-        collegeFstBtn.setBackground(new Color(255, 255, 255));
-
+    private void setPanelLayout() {
         jLayeredPane2.setPreferredSize(new Dimension(675, 600));
         jLayeredPane2.setLayout(new CardLayout());
 
@@ -404,6 +375,37 @@ public class Grades extends JPanel {
 
         jPanel11.setVisible(false);
         jPanel12.setVisible(true);
+    }
 
+    Grades() {
+        this.setPreferredSize(new Dimension(750, 750));
+        this.setBackground(new Color(255, 255, 255));
+
+        logOutBtn.setFont(new Font("Roboto", Font.BOLD, 14)); // NOI18N
+        logOutBtn.setForeground(new Color(0, 87, 170));
+        logOutBtn.setText("Log-Out");
+        logOutBtn.setBackground(new Color(255, 255, 255));
+        logOutBtn.setBorder(new javax.swing.border.LineBorder(new Color(0, 87, 170), 1, true));
+        logOutBtn.setPreferredSize(new Dimension(80, 30));
+
+        collegeLevelBtnLabel.setFont(new Font("Roboto", 0, 14)); // NOI18N
+        collegeLevelBtnLabel.setText("Below are the Buttons to navigate your grade for each college level");
+
+        collegeScdBtn.setFont(new Font("Roboto", Font.BOLD, 14)); // NOI18N
+        collegeScdBtn.setText("Second Year");
+        collegeScdBtn.setPreferredSize(new Dimension(100, 30));
+        collegeScdBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(0, 87, 170)));
+        collegeScdBtn.setBackground(new Color(255, 255, 255));
+
+        collegeFstBtn.setFont(new Font("Roboto", Font.BOLD, 14)); // NOI18N
+        collegeFstBtn.setText("First Year");
+        collegeFstBtn.setPreferredSize(new Dimension(100, 30));
+        collegeFstBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(0, 87, 170)));
+        collegeFstBtn.setBackground(new Color(255, 255, 255));
+
+        this.addStudCourse();
+        this.addFstYearGrades();
+        this.addScdYearGrades();
+        this.setPanelLayout();
     }
 }
