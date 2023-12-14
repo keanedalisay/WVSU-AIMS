@@ -34,9 +34,13 @@ public class Main extends JFrame {
     Biodata biodataPanel = new Biodata();
     Subjects subjectsPanel = new Subjects();
     Grades gradesPanel = new Grades();
-    infoPanel.add(biodataPanel, "stud_biodata");
-    infoPanel.add(subjectsPanel, "stud_subjects");
-    infoPanel.add(gradesPanel, "stud_grades");
+    infoPanel.add(biodataPanel, "StudentBiodataPanel");
+    infoPanel.add(subjectsPanel, "StudentSubjectsPanel");
+    infoPanel.add(gradesPanel, "StudentGradesPanel");
+
+    studAccountNav.setBiodataButtonEvent(infoPanel, "StudentBiodataPanel");
+    studAccountNav.setSubjectsButtonEvent(infoPanel, "StudentSubjectsPanel");
+    studAccountNav.setGradesButtonEvent(infoPanel, "StudentGradesPanel");
 
     contentPanel.add(infoPanel);
 

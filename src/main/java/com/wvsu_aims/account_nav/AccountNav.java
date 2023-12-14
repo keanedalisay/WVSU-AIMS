@@ -1,5 +1,6 @@
 package com.wvsu_aims.account_nav;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -7,6 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.CardLayout;
 import java.awt.Color;
 
 public class AccountNav extends JPanel {
@@ -25,7 +30,7 @@ public class AccountNav extends JPanel {
   }
 
   private void addButtons() {
-    biodataBtn.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
+    biodataBtn.setFont(new java.awt.Font("Roboto", Font.BOLD, 16)); // NOI18N
     biodataBtn.setText("Biodata");
     biodataBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 87, 170)));
     biodataBtn.setPreferredSize(new java.awt.Dimension(100, 40));
@@ -33,14 +38,14 @@ public class AccountNav extends JPanel {
 
     subjectsBtn.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
     subjectsBtn.setText("Subjects");
-    subjectsBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 87, 170)));
+    subjectsBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(120, 120, 120)));
     subjectsBtn.setMaximumSize(new java.awt.Dimension(100, 40));
     subjectsBtn.setPreferredSize(new java.awt.Dimension(100, 40));
     subjectsBtn.setBackground(new Color(255, 255, 255));
 
     gradesBtn.setFont(new java.awt.Font("Roboto", 0, 16)); // NOI18N
     gradesBtn.setText("Grades");
-    gradesBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 3, 0, new java.awt.Color(0, 87, 170)));
+    gradesBtn.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(120, 120, 120)));
     gradesBtn.setPreferredSize(new java.awt.Dimension(100, 40));
     gradesBtn.setBackground(new Color(255, 255, 255));
   }
@@ -88,6 +93,48 @@ public class AccountNav extends JPanel {
                             javax.swing.GroupLayout.DEFAULT_SIZE,
                             javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(29, Short.MAX_VALUE)));
+  }
+
+  public void setBiodataButtonEvent(JPanel infoPanel, String constraints) {
+    biodataBtn.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        ((CardLayout) infoPanel.getLayout()).show(infoPanel, constraints);
+        biodataBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(0, 87, 170)));
+        biodataBtn.setFont(new Font("Roboto", Font.BOLD, 16));
+        subjectsBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(120, 120, 120)));
+        subjectsBtn.setFont(new Font("Roboto", Font.PLAIN, 16));
+        gradesBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(120, 120, 120)));
+        gradesBtn.setFont(new Font("Roboto", Font.PLAIN, 16));
+      }
+    });
+  }
+
+  public void setSubjectsButtonEvent(JPanel infoPanel, String constraints) {
+    subjectsBtn.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        ((CardLayout) infoPanel.getLayout()).show(infoPanel, constraints);
+        biodataBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(120, 120, 120)));
+        biodataBtn.setFont(new Font("Roboto", Font.PLAIN, 16));
+        subjectsBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(0, 87, 170)));
+        subjectsBtn.setFont(new Font("Roboto", Font.BOLD, 16));
+        gradesBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(120, 120, 120)));
+        gradesBtn.setFont(new Font("Roboto", Font.PLAIN, 16));
+      }
+    });
+  }
+
+  public void setGradesButtonEvent(JPanel infoPanel, String constraints) {
+    gradesBtn.addActionListener(new ActionListener() {
+      public void actionPerformed(ActionEvent ev) {
+        ((CardLayout) infoPanel.getLayout()).show(infoPanel, constraints);
+        biodataBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(120, 120, 120)));
+        biodataBtn.setFont(new Font("Roboto", Font.PLAIN, 16));
+        subjectsBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 1, 0, new Color(120, 120, 120)));
+        subjectsBtn.setFont(new Font("Roboto", Font.PLAIN, 16));
+        gradesBtn.setBorder(BorderFactory.createMatteBorder(0, 0, 3, 0, new Color(0, 87, 170)));
+        gradesBtn.setFont(new Font("Roboto", Font.BOLD, 16));
+      }
+    });
   }
 
   public AccountNav() {

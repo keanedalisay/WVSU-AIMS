@@ -62,7 +62,7 @@ public class Biodata extends JPanel {
                         .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE,
                             javax.swing.GroupLayout.DEFAULT_SIZE,
                             javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(75, 75, 75))
+                        .addGap(52, 52, 52))
                     .addGroup(studBioPanelLayout.createSequentialGroup()
                         .addGroup(studBioPanelLayout
                             .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,7 +79,7 @@ public class Biodata extends JPanel {
     studBioPanelLayout.setVerticalGroup(
         studBioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(studBioPanelLayout.createSequentialGroup()
-                .addGap(26, 26, 26)
+                .addGap(15, 15, 15)
                 .addGroup(studBioPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE,
                         javax.swing.GroupLayout.DEFAULT_SIZE,
@@ -211,7 +211,6 @@ public class Biodata extends JPanel {
     jPanel8Layout.setVerticalGroup(
         jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
                 .addComponent(fBioHeading)
                 .addGap(15, 15, 15)
                 .addComponent(fFirstNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE,
@@ -257,8 +256,6 @@ public class Biodata extends JPanel {
 
   Biodata() {
     this.setBackground(new java.awt.Color(255, 255, 255));
-    // this.setBorder(javax.swing.BorderFactory.createLineBorder(new
-    // java.awt.Color(0, 0, 0)));
     this.setPreferredSize(new Dimension(750, 750));
 
     logOutBtn.setFont(new Font("Roboto", Font.BOLD, 14)); // NOI18N
